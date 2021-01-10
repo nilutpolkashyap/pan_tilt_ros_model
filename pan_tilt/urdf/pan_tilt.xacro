@@ -24,10 +24,12 @@
 		</visual>
 	</link>
 
-	<joint name="pan_joint" type="fixed"/>
+	<joint name="pan_joint" type="revolute"/>
 		<child link="pan_link"/>
 		<origin xyz="0 0 0.1"/>
 		<axis xyz="0 0 1"/>
+		<limit effort="300" velocity="0.05" lower="-3.14" upper="3.14"/>
+		<dynamics damping="50" friction="1"/>
 	</joint>
 
 	<link name="pan_link">
@@ -42,11 +44,13 @@
 		</visual>
 	</link>
 
-	<joint name="tilt_joint" type="fixed">
+	<joint name="tilt_joint" type="revolute">
 		<parent link="pan_link"/>
 		<child link="tilt_link"/>
 		<origin xyz="0 0 0.2"/>
 		<axis xyz="0 1 0"/>
+		<limit effort="300" velocity="0.05" lower="-4.64" upper="-1.5"/>
+		<dynamics damping="50" friction="1"/>
 	</joint>
 
 	<link name="tilt_link">
